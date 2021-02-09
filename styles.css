@@ -1,3 +1,9 @@
+/* 4F5D75 2d3142,
+bfc0c0,
+ffffff,
+ef8354,
+4f5d75  */
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +13,7 @@
 body {
   padding-bottom: 1.2rem;
   height: 100%;
-  background-color: #282c34;
+  background-color: #2D3142;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +39,7 @@ body {
   padding: 13px;
   border-radius: 8px;
   font-size: 1.2rem;
-  background-color: #aff3ff;
+  background-color: #BFC0C0;
   color: black;
   margin: 15px 5px 0px 25px;
   text-align: left;
@@ -44,7 +50,7 @@ body {
 }
 
 .message-form {
-  background-color: rgb(95, 95, 95);
+  background-color: #4F5D75;
   position: absolute;
   padding: 15px;
   margin-top: 20px;
@@ -65,9 +71,14 @@ body {
   padding: 9px;
   border-radius: 20px;
   cursor: pointer;
-  background-color: #00588b;
+  background-color: #EF8354;
   font-size: large;
   color: white;
   font-weight: bold;
   border: none;
   margin-left: 1%;
+}
+
+.to-right {
+  text-align: right;
+}
