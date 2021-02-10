@@ -1,9 +1,9 @@
     const messagesList = document.querySelector("messages"); // <ul> with all the <li> messages
-    const messageForm = document.querySelector("message-form"); // Input form
-    const inputField = document.querySelector("msg-input");
-    const sendButton = document.querySelector("msg-btn");
+    const messageForm = document.querySelector("#message-form"); // Input form
+    const inputField = document.querySelector("#msg-input");
+    const sendButton = document.querySelector("#msg-btn");
     const db = firebase.firestore();
-    const chats = db.ref("/chats"); // Reference to the chats folder on firebase
+    const chats = db.collection("chats"); // Reference to the chats folder on firebase
 
     /*     var test = localStorage.getItem("username");
         console.log(test); */
@@ -14,8 +14,9 @@
       if (!localStorage.getItem("username")) {
         const username = prompt("Username eingeben")
         localStorage.setItem("username", username)
-        return username;
       }
+      const username = localStorage.getItem("username")
+      return username;
     });
 
     // Listen to the Senden button
@@ -25,12 +26,15 @@
       e.preventDefault();
       const messageText = inputField.value;
 
-      if (messageText.trim());
-      const message = {
-        username: username,
-        messageText: messageText
+      if (messageText.trim()) {
+        const message = {
+          username: username,
+          messageText: messageText
+        }
+        chats.add(message);
+        console.log(message)
       };
+      messageForm.reset();
 
-      msgRef.push(msg);
-      inputField.reset();
+
     }
