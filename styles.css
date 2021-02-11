@@ -1,10 +1,9 @@
-/* 4F5D75 2d3142,
-bfc0c0,
-ffffff,
-ef8354,
-4f5d75  */
-
-* {
+#4F5D75,
+#2d3142,
+#bfc0c0,
+#ffffff,
+#ef8354,
+#4f5d75 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -26,7 +25,7 @@ body {
   margin-top: 20px;
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
-
+  overflow-y: scroll;
   box-shadow: 22px 24px 18px -10px rgba(0, 0, 0, 0.35);
 }
 
@@ -81,4 +80,5 @@ body {
 
 .to-right {
   text-align: right;
+
 }
