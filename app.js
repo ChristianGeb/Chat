@@ -15,8 +15,6 @@
         const username = prompt("Username eingeben")
         localStorage.setItem("username", username)
       }
-      const username = localStorage.getItem("username")
-      return username;
     });
 
     // Listen to the Senden button
@@ -26,7 +24,9 @@
       e.preventDefault();
       const messageText = inputField.value;
 
+      // If message not empty send object to the firebase
       if (messageText.trim()) {
+        const username = localStorage.getItem("username")
         const message = {
           username: username,
           messageText: messageText
@@ -34,6 +34,7 @@
         chats.add(message);
         console.log(message)
       };
+      // Clear form after sending
       messageForm.reset();
 
 
