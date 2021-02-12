@@ -48,6 +48,10 @@ body {
   font-weight: bold;
 }
 
+.time {
+  font-size: 0.9rem;
+}
+
 #message-form {
   background-color: #4F5D75;
   position: absolute;

@@ -19,15 +19,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Getting messages from the database
 function addChatOnScreen(chat) {
-  const username = localStorage.getItem("username")
+  const localUsername = localStorage.getItem("username")
   /* let time = chat.created.toDate();
    */
 
-  // Messages load, check if its local user
+  // Messages load, display, check if its local user
   let html = `
-        <li class="${chat.username === username ? "msg to-right": "msg"}"><span class = "msg-span">
-        <i class = "name">${chat.username}: </i>${chat.messageText}
+        <li class="${chat.username === localUsername ? "msg to-right": "msg"}">
+        <span class = "msg-span">
+        <i class = "name">${chat.username} </i>
+        <span class = "time">${chat.created.toDate().toLocaleTimeString()}</span>
+        <br>${chat.messageText}
         </span>
+        
         </li>
       `
   // Adding the generated list item message to the chat
@@ -42,7 +46,6 @@ function addChatOnScreen(chat) {
 chats.onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     const doc = change.doc;
-    console.log(doc)
     if (change.type === "added") {
       addChatOnScreen(doc.data());
     }
@@ -60,9 +63,11 @@ function sendMessage(e) {
   // If message not empty send object to the firebase
   if (messageText.trim()) {
     const username = localStorage.getItem("username")
+    const now = new Date();
     const message = {
       username: username,
-      messageText: messageText
+      messageText: messageText,
+      created: firebase.firestore.Timestamp.fromDate(now)
     }
     chats.add(message);
   };
