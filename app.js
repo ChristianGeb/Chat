@@ -26,7 +26,7 @@ function addChatOnScreen(chat) {
   // Messages load, display, check if its local user
   let html = `
         <li class="${chat.username === localUsername ? "msg to-right": "msg"}">
-        <span class = "msg-span">
+        <span class = "${chat.username === localUsername ? "msg-span color-right": "msg-span"}">
         <div class = "name">${chat.username}
         <span class = "time">${chat.created.toDate().toLocaleTimeString()}</span>
         </div>
