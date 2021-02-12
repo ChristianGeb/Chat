@@ -32,7 +32,6 @@ function addChatOnScreen(chat) {
         </div>
         ${chat.messageText}
         </span>
-        
         </li>
       `
   // Adding the generated list item message to the chat
@@ -44,7 +43,7 @@ function addChatOnScreen(chat) {
 }
 
 // Look for added or removed documents in database
-chats.onSnapshot(snapshot => {
+chats.orderBy("created", "asc").onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     const doc = change.doc;
     if (change.type === "added") {
@@ -52,7 +51,6 @@ chats.onSnapshot(snapshot => {
     }
   });
 });
-
 
 // Listen to the Senden button
 messageForm.addEventListener('submit', sendMessage);

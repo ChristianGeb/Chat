@@ -1,12 +1,32 @@
-#4F5D75,
+/* #4F5D75,
 #2d3142,
 #bfc0c0,
 #ffffff,
 #ef8354,
-#4f5d75 * {
+#4f5d75  */
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* Firefox Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #40455c #7082a0;
+}
+
+/* Chrome, Edge, and Safari SCrollbar*/
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #40455c;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #7082a0;
+  border-radius: 20px;
+  border: 3px solid #40455c;
 }
 
 body {
@@ -22,7 +42,7 @@ body {
 .messages-window {
   height: 70vh;
   width: 90vw;
-  max-width: 800px;
+  max-width: 1000px;
   margin-top: 20px;
   background-color: rgb(255, 255, 255);
   border-radius: 8px;
@@ -36,12 +56,11 @@ body {
 
 .msg-span {
   display: inline-block;
-  padding: 13px;
+  padding: 8px;
   border-radius: 8px;
-  font-size: 1.2rem;
-  background-color: #BFC0C0;
+  background-color: #ccf1f1;
   color: black;
-  margin: 15px 5px 0px 25px;
+  margin: 0px 30px 15px 30px;
   text-align: left;
 }
 
@@ -55,13 +74,17 @@ body {
   font-weight: normal;
 }
 
+#messages {
+  padding: 0;
+}
+
 #message-form {
   background-color: #4F5D75;
   position: absolute;
   padding: 15px;
   margin-top: 20px;
   width: 90vw;
-  max-width: 800px;
+  max-width: 1000px;
   border-radius: 8px;
   display: flex;
   justify-content: space-evenly;
@@ -77,7 +100,7 @@ body {
   padding: 9px;
   border-radius: 20px;
   cursor: pointer;
-  background-color: #EF8354;
+  background-color: #6db7fd;
   font-size: large;
   color: white;
   font-weight: bold;
