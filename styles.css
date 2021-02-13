@@ -57,11 +57,12 @@ body {
 
 .msg-span {
   display: inline-block;
+  max-width: 85%;
   padding: 8px;
   border-radius: 8px;
   background-color: #ccf1f1;
   color: black;
-  margin: 0px 30px 15px 30px;
+  margin: 0px 20px 15px 30px;
   text-align: left;
 }
 
@@ -80,7 +81,7 @@ body {
 }
 
 .time {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: normal;
 }
 
