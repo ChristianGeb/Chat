@@ -104,27 +104,25 @@ body {
 #msg-input {
   padding: 10px;
   border-radius: 8px;
-  width: 85%;
+  width: 90%;
 }
 
 #msg-btn {
-  width: 60px;
+  width: 45px;
   height: 40px;
-  padding: 9px;
   border-radius: 8px;
   cursor: pointer;
-  background-color: #6db7fd;
+  background-color: #4F5D75;
   font-size: 0.9rem;
-  color: white;
   font-weight: bold;
   border: none;
-  margin-left: 1%;
+  margin-left: 10px;
 
 }
 
 #send-icon {
-  width: 60%;
-  filter: invert(100%);
+  max-width: 100%;
+  max-height: 100%;
 }
 
 textarea:focus,
