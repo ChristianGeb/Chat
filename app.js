@@ -5,10 +5,6 @@ const sendButton = document.querySelector("#msg-btn");
 const db = firebase.firestore();
 const chats = db.collection("chats"); // Reference to the chats folder on firebase
 
-/*     var test = localStorage.getItem("username");
-    console.log(test); */
-
-
 // Check for username, if not enter and save to local storage for future
 document.addEventListener("DOMContentLoaded", () => {
   if (!localStorage.getItem("username")) {
@@ -20,15 +16,27 @@ document.addEventListener("DOMContentLoaded", () => {
 // Getting messages from the database
 function addChatOnScreen(chat) {
   const localUsername = localStorage.getItem("username")
-  /* let time = chat.created.toDate();
-   */
+
+  // Time right now and when was the message created
+  let now = new Date();
+  let createdAt = chat.created.toDate();
+  const oneDay = 60 * 60 * 24 * 1000
+
+  // Is the message older than one 24 hours?
+  var oldMessage = (now - createdAt) > oneDay;
+
+  // If true convert to full date (e.g. 12.2.2021), if false convert to time (e.g. 19:23:15)
+  const messageDate = oldMessage ? chat.created.toDate().getDate() +
+    "." + (chat.created.toDate().getMonth() + 1) +
+    "." + chat.created.toDate().getFullYear() :
+    chat.created.toDate().toLocaleTimeString();
 
   // Messages load, display, check if its local user
   let html = `
         <li class="${chat.username === localUsername ? "msg to-right": "msg"}">
         <span class = "${chat.username === localUsername ? "msg-span color-right": "msg-span"}">
         <div class = "name">${chat.username}
-        <span class = "time">${chat.created.toDate().toLocaleTimeString()}</span>
+        <span class = "time">${messageDate}</span>
         </div>
         ${chat.messageText}
         </span>
@@ -43,7 +51,7 @@ function addChatOnScreen(chat) {
 }
 
 // Look for added or removed documents in database
-chats.orderBy("created", "asc").onSnapshot(snapshot => {
+chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     const doc = change.doc;
     if (change.type === "added") {
