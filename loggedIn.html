@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+  <link rel="stylesheet" href="styles.css">
+  <title>Chat</title>
+</head>
+
+<body>
+  <section id="signed-in">
+    <div class="chat-container">
+      <div class="messages-window" id="messages-window">
+        <ul id="messages">
+        </ul>
+      </div>
+      <form autocomplete="off" id="message-form">
+        <input type="text" id="msg-input" placeholder="Schreibe eine Nachricht">
+        <button id="msg-btn" type="submit"><i class="fas fa-chevron-circle-right send-icon"></i></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyD6N2TcehewRE3J2ll_fJpy-H_f1gpaLNI",
+      authDomain: "test-project-c3ad1.firebaseapp.com",
+      databaseURL: "https://test-project-c3ad1-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "test-project-c3ad1",
+      storageBucket: "test-project-c3ad1.appspot.com",
+      messagingSenderId: "806523250585",
+      appId: "1:806523250585:web:78af17627ac5a55e505508",
+      measurementId: "G-E1RDJ1HP8P"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script src="app.js" defer></script>
+</body>
+
+</html>
