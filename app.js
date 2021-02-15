@@ -2,6 +2,11 @@ const messagesList = document.querySelector("#messages"); // <ul> with all the <
 const messageForm = document.querySelector("#message-form"); // Input form
 const inputField = document.querySelector("#msg-input");
 const sendButton = document.querySelector("#msg-btn");
+const signedIn = document.querySelector("#signed-in");
+const signedOut = document.querySelector("#signed-out");
+const signInBtn = document.querySelector("#sign-in-btn");
+
+const auth = firebase.auth();
 const db = firebase.firestore();
 const chats = db.collection("chats"); // Reference to the chats folder on firebase
 

@@ -137,3 +137,28 @@ input:focus {
 input {
   border-style: hidden;
 }
+
+#login {
+  height: 70vh;
+  width: 90vw;
+  max-width: 1000px;
+  margin-top: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 22px 24px 18px -10px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sign-in-btn {
+  height: 40px;
+  padding: 0 10px;
+  margin-left: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  background-color: #4F5D75;
+  font-size: 1.2rem;
+  border: none;
+}
