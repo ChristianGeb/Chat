@@ -9,6 +9,7 @@ const signInBtn = document.querySelector("#sign-in-btn");
 const db = firebase.firestore();
 const chats = db.collection("chats"); // Reference to the chats folder on firebase
 
+// Code from https://firebase.google.com/docs/auth/web/firebaseui
 // Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
@@ -38,16 +39,12 @@ var uiConfig = {
   signInSuccessUrl: 'loggedIn.html',
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID
-
   ],
-
 };
 
 // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
-
 
 // Check for username, if not enter and save to local storage for future
 document.addEventListener("DOMContentLoaded", () => {
