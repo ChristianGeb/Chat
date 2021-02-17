@@ -49,6 +49,7 @@ body {
 }
 
 .msg-span {
+  overflow-wrap: break-word;
   display: inline-block;
   max-width: 85%;
   padding: 8px;
@@ -84,7 +85,6 @@ body {
 
 #message-form {
   background-color: #4F5D75;
-  position: absolute;
   padding: 15px;
   margin-top: 20px;
   width: 90vw;
@@ -144,14 +144,15 @@ input {
   justify-content: center;
 }
 
-#sign-in-btn {
-  height: 40px;
-  padding: 0 10px;
-  margin-left: 10px;
+#sign-out-btn {
+  display: block;
+  height: 20px;
+  padding: 0 8px;
+  margin: 10px auto;
   border-radius: 8px;
   cursor: pointer;
   color: white;
   background-color: #4F5D75;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   border: none;
 }

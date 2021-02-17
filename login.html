@@ -14,18 +14,11 @@
 </head>
 
 <body>
-  <section id="signed-in">
-    <div class="chat-container">
-      <div class="messages-window" id="messages-window">
-        <ul id="messages">
-        </ul>
-      </div>
-      <form autocomplete="off" id="message-form">
-        <input type="text" id="msg-input" placeholder="Schreibe eine Nachricht">
-        <button id="msg-btn" type="submit"><i class="fas fa-chevron-circle-right send-icon"></i></button>
-      </form>
-    </div>
-  </section>
+
+  <div id="login">
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+  </div>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
@@ -50,7 +43,7 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>
-  <script src="app.js" defer></script>
+  <script src="login.js" defer></script>
 </body>
 
 </html>

@@ -2,61 +2,25 @@ const messagesList = document.querySelector("#messages"); // <ul> with all the <
 const messageForm = document.querySelector("#message-form"); // Input form
 const inputField = document.querySelector("#msg-input");
 const sendButton = document.querySelector("#msg-btn");
-const signedIn = document.querySelector("#signed-in");
-const signedOut = document.querySelector("#signed-out");
-const signInBtn = document.querySelector("#sign-in-btn");
+const signOutBtn = document.querySelector("#sign-out-btn");
+let localUsername;
 
 const db = firebase.firestore();
 const chats = db.collection("chats"); // Reference to the chats folder on firebase
 
-// Code from https://firebase.google.com/docs/auth/web/firebaseui
-// Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// Check if user is logged in, save name.
 
-ui.start('#firebaseui-auth-container', {
-  signInOptions: [{
-    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    requireDisplayName: false
-  }]
-});
-
-var uiConfig = {
-  callbacks: {
-    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-      // User successfully signed in.
-      // Return type determines whether we continue the redirect automatically
-      // or whether we leave that to developer to handle.
-      return true;
-    },
-    uiShown: function () {
-      // The widget is rendered.
-      // Hide the loader.
-      document.getElementById('loader').style.display = 'none';
-    }
-  },
-  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-  signInFlow: 'popup',
-  signInSuccessUrl: 'loggedIn.html',
-  signInOptions: [
-    // Leave the lines as is for the providers you want to offer your users.
-    firebase.auth.EmailAuthProvider.PROVIDER_ID
-  ],
-};
-
-// The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig);
-
-// Check for username, if not enter and save to local storage for future
-document.addEventListener("DOMContentLoaded", () => {
-  if (!localStorage.getItem("username")) {
-    const username = prompt("Username eingeben")
-    localStorage.setItem("username", username)
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    localUsername = user.displayName;
+  } else {
+    // If not logged in redirect to loginpage
+    window.location.replace("login.html");
   }
 });
 
 // Getting messages from the database
 function addChatOnScreen(chat) {
-  const localUsername = localStorage.getItem("username")
 
   // Time right now and when was the message created
   let now = new Date();
@@ -110,10 +74,17 @@ function sendMessage(e) {
 
   // If message not empty send object to the firebase
   if (messageText.trim()) {
-    const username = localStorage.getItem("username")
+
+    /*   const user = firebase.auth().currentUser;
+      if (user != null) {
+        const username = user.displayName;
+        console.log(username)
+        return username;
+      } */
+
     const now = new Date();
     const message = {
-      username: username,
+      username: localUsername,
       messageText: messageText,
       created: firebase.firestore.Timestamp.fromDate(now)
     }
@@ -121,4 +92,15 @@ function sendMessage(e) {
   };
   // Clear form after sending
   messageForm.reset();
+}
+
+signOutBtn.addEventListener("click", signOut);
+
+function signOut() {
+  firebase.auth().signOut().then(() => {
+    console.log("You have been signed out");
+    window.location.replace("login.html");
+  }).catch((error) => {
+    console.log("There was an error!")
+  });
 }
