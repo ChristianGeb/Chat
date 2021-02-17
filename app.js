@@ -5,11 +5,7 @@ const sendButton = document.querySelector("#msg-btn");
 const signOutBtn = document.querySelector("#sign-out-btn");
 let localUsername;
 
-/* var Filter = require('bad-words'),
-filter = new Filter(); */
 
-/* console.log(filter.clean("Don't be an ash0le"));
- */
 const db = firebase.firestore();
 const chats = db.collection("chats"); // Reference to the chats folder on firebase
 
