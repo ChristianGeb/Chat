@@ -1,9 +1,8 @@
-const signOutBtn = document.querySelector("#sign-out-btn");
+const messageForm = document.querySelector("#username-form"); // Input form
+const inputField = document.querySelector("#msg-input");
+const usernameTitle = document.querySelector("#username-title");
 
-const db = firebase.firestore();
-const chats = db.collection("chats"); // Reference to the chats folder on firebase
-
-// Check if user is logged in, save name.
+var user = firebase.auth().currentUser;
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
@@ -14,13 +13,20 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
-signOutBtn.addEventListener("click", signOut);
+messageForm.addEventListener('submit', changeName);
 
-function signOut() {
-  firebase.auth().signOut().then(() => {
-    console.log("You have been signed out");
-    window.location.replace("login.html");
-  }).catch((error) => {
-    console.log("There was an error!")
+function changeName(e) {
+  e.preventDefault();
+  const newUsername = inputField.value.trim();
+  var user = firebase.auth().currentUser;
+
+  user.updateProfile({
+    displayName: newUsername
+  }).then(function () {
+    console.log("Name updated!");
+    usernameTitle.innerHTML = "Username changed to " + newUsername + "!";
+  }).catch(function (error) {
+    console.log("Fail!");
   });
+  messageForm.reset();
 }

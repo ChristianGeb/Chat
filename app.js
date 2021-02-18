@@ -1,7 +1,6 @@
 const messagesList = document.querySelector("#messages"); // <ul> with all the <li> messages
 const messageForm = document.querySelector("#message-form"); // Input form
 const inputField = document.querySelector("#msg-input");
-const sendButton = document.querySelector("#msg-btn");
 const signOutBtn = document.querySelector("#sign-out-btn");
 const settingsBtn = document.querySelector("#settings-btn");
 let localUsername;

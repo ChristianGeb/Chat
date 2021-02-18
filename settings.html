@@ -10,20 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
   <link rel="stylesheet" href="styles.css">
-  <title>Chat</title>
+  <title>Settings</title>
 </head>
 
 <body>
 
-  <div class="chat-container">
-  </div>
-  <a href="index.html"><i class="fas fa-arrow-circle-left back-icon"></i></a>
-  </div>
-  <h2>Change Username</h2>
-  <form autocomplete="off" id="username-form">
-    <input type="text" id="msg-input" placeholder="Enter new Username">
-    <button id="msg-btn" type="submit"><i class="fas fa-chevron-circle-right send-icon"></i></button>
-  </form>
+  <div class="settings-container">
+    <a href="index.html"><i class="fas fa-arrow-circle-left back-icon"></i></a>
+    <h2 id="username-title">Change Username</h2>
+    <form autocomplete="off" id="username-form">
+      <input type="text" id="msg-input" placeholder="Enter new Username">
+      <button id="msg-btn" type="submit"><i class="fas fa-check-circle send-icon"></i></button>
+    </form>
   </div>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -48,7 +46,7 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>
-  <script src="app.js" defer></script>
+  <script src="settings.js"></script>
 </body>
 
 </html>
