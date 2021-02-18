@@ -144,7 +144,7 @@ input {
   justify-content: center;
 }
 
-#sign-out-btn {
+.lwr-btn {
   display: block;
   height: 20px;
   padding: 0 8px;
@@ -155,4 +155,26 @@ input {
   background-color: #4F5D75;
   font-size: 0.8rem;
   border: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.back-icon {
+  font-size: 32px;
+  color: #4F5D75;
+  margin: 20px;
+}
+
+#username-form {
+  background-color: #4F5D75;
+  padding: 15px;
+  margin: 20px;
+  width: 60vw;
+  max-width: 1000px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-evenly;
 }

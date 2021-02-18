@@ -3,8 +3,8 @@ const messageForm = document.querySelector("#message-form"); // Input form
 const inputField = document.querySelector("#msg-input");
 const sendButton = document.querySelector("#msg-btn");
 const signOutBtn = document.querySelector("#sign-out-btn");
+const settingsBtn = document.querySelector("#settings-btn");
 let localUsername;
-
 
 const db = firebase.firestore();
 const chats = db.collection("chats"); // Reference to the chats folder on firebase
