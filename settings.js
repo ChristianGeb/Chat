@@ -1,6 +1,10 @@
-const messageForm = document.querySelector("#username-form"); // Input form
+const usernameForm = document.querySelector("#username-form");
+const passwordForm = document.querySelector("#password-form");
 const inputField = document.querySelector("#msg-input");
 const usernameTitle = document.querySelector("#username-title");
+const passwordTitle = document.querySelector("#password-title");
+const oldPwInput = document.querySelector("#old-pw");
+const newPwInput = document.querySelector("#new-pw");
 
 var user = firebase.auth().currentUser;
 
@@ -12,8 +16,6 @@ firebase.auth().onAuthStateChanged(function (user) {
     window.location.replace("login.html");
   }
 });
-
-messageForm.addEventListener('submit', changeName);
 
 function changeName(e) {
   e.preventDefault();
@@ -28,5 +30,37 @@ function changeName(e) {
   }).catch(function (error) {
     console.log("Fail!");
   });
-  messageForm.reset();
+  usernameForm.reset();
 }
+
+usernameForm.addEventListener('submit', changeName);
+
+// Reauthenticate before you can update to a new password
+function reauth(pw) {
+  var user = firebase.auth().currentUser;
+  var cred = firebase.auth.EmailAuthProvider.credential(user.email, pw);
+  return user.reauthenticateWithCredential(cred);
+}
+
+function changePassword(e) {
+  e.preventDefault();
+  var user = firebase.auth().currentUser;
+  const oldPw = oldPwInput.value.trim();
+  const newPw = newPwInput.value.trim();
+  reauth(oldPw).then(() => {
+    user.updatePassword(newPw).then(() => {
+      console.log("PW updated!");
+      passwordTitle.innerHTML = "Password changed!";
+
+    }).catch((error) => {
+      console.log("Fail!");
+      passwordTitle.innerHTML = "Password too short!";
+    });
+  }).catch((error) => {
+    console.log("Fail!");
+    passwordTitle.innerHTML = "Wrong password";
+  });
+  passwordForm.reset();
+}
+
+passwordForm.addEventListener('submit', changePassword);

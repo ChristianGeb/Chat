@@ -102,6 +102,7 @@ h2 {
   padding: 10px;
   border-radius: 8px;
   width: 90%;
+  margin-right: 5px;
 }
 
 #msg-btn {
@@ -178,7 +179,7 @@ a {
   margin: 50px auto;
 }
 
-#username-form {
+.settings-form {
   background-color: #4F5D75;
   padding: 15px;
   margin: 20px;
@@ -187,4 +188,12 @@ a {
   border-radius: 8px;
   display: flex;
   justify-content: space-evenly;
+}
+
+#old-pw,
+#new-pw {
+  padding: 10px;
+  border-radius: 8px;
+  width: 43%;
+  margin-right: 5px;
 }

@@ -18,8 +18,14 @@
   <div class="settings-container">
     <a href="index.html"><i class="fas fa-arrow-circle-left back-icon"></i></a>
     <h2 id="username-title">Change Username</h2>
-    <form autocomplete="off" id="username-form">
-      <input type="text" id="msg-input" placeholder="Enter new Username">
+    <form autocomplete="off" id="username-form" class="settings-form">
+      <input type="text" id="msg-input" placeholder="Enter new username">
+      <button id="msg-btn" type="submit"><i class="fas fa-check-circle send-icon"></i></button>
+    </form>
+    <h2 id="password-title">Change Password</h2>
+    <form autocomplete="off" id="password-form" class="settings-form">
+      <input type="password" id="old-pw" placeholder="Old password">
+      <input type="password" id="new-pw" placeholder="New password">
       <button id="msg-btn" type="submit"><i class="fas fa-check-circle send-icon"></i></button>
     </form>
   </div>
