@@ -26,7 +26,7 @@ function changeName(e) {
     displayName: newUsername
   }).then(function () {
     console.log("Name updated!");
-    usernameTitle.innerHTML = "<span style='color:#30ef00'>Username changed to " + newUsername + "!</span>";
+    usernameTitle.innerHTML = "<span style='color:#2ac4aa'>Username changed to " + newUsername + "!</span>";
   }).catch(function (error) {
     console.log("Fail!");
   });
@@ -50,15 +50,15 @@ function changePassword(e) {
   reauth(oldPw).then(() => {
     user.updatePassword(newPw).then(() => {
       console.log("PW updated!");
-      passwordTitle.innerHTML = "<span style='color:#30ef00'>Password changed!</span>";
+      passwordTitle.innerHTML = "<span style='color:#2ac4aa'>Password changed!</span>";
 
     }).catch((error) => {
       console.log("Fail!");
-      passwordTitle.innerHTML = "<span style='color:#ffc200'>Password too short!</span>";
+      passwordTitle.innerHTML = "<span style='color:#eccb62'>Password too short!</span>";
     });
   }).catch((error) => {
     console.log("Fail!");
-    passwordTitle.innerHTML = "<span style='color:#FF0000'>Wrong password!</span>";
+    passwordTitle.innerHTML = "<span style='color:#ec6562'>Wrong password!</span>";
   });
   passwordForm.reset();
 }
