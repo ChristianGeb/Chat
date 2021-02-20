@@ -3,7 +3,10 @@ const passwordForm = document.querySelector("#password-form");
 const inputField = document.querySelector("#msg-input");
 const usernameTitle = document.querySelector("#username-title");
 const passwordTitle = document.querySelector("#password-title");
+const deleteTitle = document.querySelector("#delete-title");
 const oldPwInput = document.querySelector("#old-pw");
+const oldPwDeleteInput = document.querySelector("#delete-input");
+const deleteUserBtn = document.querySelector("#delete-btn");
 const newPwInput = document.querySelector("#new-pw");
 
 var user = firebase.auth().currentUser;
@@ -64,3 +67,23 @@ function changePassword(e) {
 }
 
 passwordForm.addEventListener('submit', changePassword);
+
+function deleteUser(e) {
+  e.preventDefault();
+  var user = firebase.auth().currentUser;
+  const pw = oldPwDeleteInput.value.trim();
+  reauth(pw).then(() => {
+    user.delete().then(() => {
+      console.log("DELETE");
+      deleteTitle.innerHTML = "<span style='color:#ec6562'>Deleting...</span>";
+
+    }).catch((error) => {
+      console.log("Something went wrong");
+    });
+  }).catch((error) => {
+    console.log("Fail!");
+    deleteTitle.innerHTML = "<span style='color:#ec6562'>Wrong password!</span>";
+  });
+}
+
+deleteUserBtn.addEventListener('click', deleteUser);

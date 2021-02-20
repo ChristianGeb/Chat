@@ -35,6 +35,7 @@ body {
 
 h2 {
   color: white;
+  margin-top: 40px;
 }
 
 .messages-window {
@@ -134,6 +135,7 @@ input:focus {
 
 input {
   border-style: hidden;
+  text-align: center;
 }
 
 #login {
@@ -176,7 +178,7 @@ a {
 .back-icon {
   font-size: 32px;
   color: #ffffff;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .settings-form {
@@ -195,5 +197,35 @@ a {
   padding: 10px;
   border-radius: 8px;
   width: 43%;
+  margin-right: 5px;
+}
+
+#delete-btn {
+  width: 150px;
+  padding: 10px;
+  background-color: #ec6562;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#delete-form {
+  background-color: #4F5D75;
+  padding: 15px 0;
+  margin: 20px auto;
+  width: 20vw;
+  max-width: 400px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#delete-input {
+  padding: 10px;
+  border-radius: 8px;
+  width: 80%;
   margin-right: 5px;
 }
