@@ -1,6 +1,6 @@
 const usernameForm = document.querySelector("#username-form");
 const passwordForm = document.querySelector("#password-form");
-const inputField = document.querySelector("#msg-input");
+const inputField = document.querySelector("#name-input");
 const usernameTitle = document.querySelector("#username-title");
 const passwordTitle = document.querySelector("#password-title");
 const deleteTitle = document.querySelector("#delete-title");

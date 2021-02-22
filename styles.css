@@ -99,12 +99,6 @@ h2 {
   justify-content: space-evenly;
 }
 
-#msg-input {
-  padding: 10px;
-  border-radius: 8px;
-  width: 90%;
-  margin-right: 5px;
-}
 
 #msg-btn {
   width: 20px;
@@ -136,6 +130,21 @@ input:focus {
 input {
   border-style: hidden;
   text-align: center;
+}
+
+#msg-input {
+  padding: 10px;
+  border-radius: 8px;
+  width: 90%;
+  margin-right: 5px;
+  text-align: left;
+}
+
+#name-input {
+  padding: 10px;
+  border-radius: 8px;
+  width: 90%;
+  margin-right: 5px;
 }
 
 #login {
