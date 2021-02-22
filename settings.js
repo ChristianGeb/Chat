@@ -22,18 +22,23 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 function changeName(e) {
   e.preventDefault();
-  const newUsername = inputField.value.trim();
-  var user = firebase.auth().currentUser;
 
-  user.updateProfile({
-    displayName: newUsername
-  }).then(function () {
-    console.log("Name updated!");
-    usernameTitle.innerHTML = "<span style='color:#2ac4aa'>Username changed to " + newUsername + "!</span>";
-  }).catch(function (error) {
-    console.log("Fail!");
-  });
-  usernameForm.reset();
+  const newUsername = inputField.value.trim();
+  if (newUsername) {
+    var user = firebase.auth().currentUser;
+
+    user.updateProfile({
+      displayName: newUsername
+    }).then(function () {
+      console.log("Name updated!");
+      usernameTitle.innerHTML = "<span style='color:#2ac4aa'>Username changed to " + newUsername + "!</span>";
+    }).catch(function (error) {
+      console.log("Fail!");
+    });
+    usernameForm.reset();
+  } else {
+    usernameTitle.innerHTML = "<span style='color:#ec6562'>Username cant be empty!</span>";
+  }
 }
 
 usernameForm.addEventListener('submit', changeName);

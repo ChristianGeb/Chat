@@ -3,13 +3,12 @@ const messageForm = document.querySelector("#message-form"); // Input form
 const inputField = document.querySelector("#msg-input");
 const signOutBtn = document.querySelector("#sign-out-btn");
 const settingsBtn = document.querySelector("#settings-btn");
+const rooms = document.querySelector(".chat-rooms");
 let localUsername;
-
 const db = firebase.firestore();
-const chats = db.collection("chats"); // Reference to the chats folder on firebase
+var chats = db.collection("general");
 
-// Check if user is logged in, save name.
-
+// Check if user is logged in
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     localUsername = user.displayName;
@@ -18,6 +17,23 @@ firebase.auth().onAuthStateChanged(function (user) {
     window.location.replace("login.html");
   }
 });
+
+// Select the Channel
+rooms.addEventListener("click", e => {
+  if (e.target.tagName === "BUTTON") {
+    chats = db.collection(e.target.getAttribute("id"));
+    messagesList.innerHTML = "";
+    console.log(chats)
+    chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        const doc = change.doc;
+        addChatOnScreen(doc.data());
+      });
+    });
+  }
+});
+
+console.log(chats);
 
 // Getting messages from the database
 function addChatOnScreen(chat) {
