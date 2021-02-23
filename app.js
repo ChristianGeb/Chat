@@ -18,22 +18,29 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
+/* .orderBy("created", "asc").limitToLast(50)
+ */
+
 // Select the Channel
 rooms.addEventListener("click", e => {
   if (e.target.tagName === "BUTTON") {
     chats = db.collection(e.target.getAttribute("id"));
     messagesList.innerHTML = "";
-    console.log(chats)
-    chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
-      snapshot.docChanges().forEach(change => {
-        const doc = change.doc;
-        addChatOnScreen(doc.data());
-      });
+    console.log(chats);
+    chats.get().then((doc) => {
+      if (doc.exists) {
+        console.log(doc)
+        /*         addChatOnScreen(doc.data());
+         */
+      } else {
+        console.log("No such document!");
+      }
+    }).catch((error) => {
+      console.log("Error getting document:", error);
     });
   }
 });
 
-console.log(chats);
 
 // Getting messages from the database
 function addChatOnScreen(chat) {
