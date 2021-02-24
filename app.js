@@ -18,30 +18,6 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
-/* .orderBy("created", "asc").limitToLast(50)
- */
-
-// Select the Channel
-rooms.addEventListener("click", e => {
-  if (e.target.tagName === "BUTTON") {
-    chats = db.collection(e.target.getAttribute("id"));
-    messagesList.innerHTML = "";
-    console.log(chats);
-    chats.get().then((doc) => {
-      if (doc.exists) {
-        console.log(doc)
-        /*         addChatOnScreen(doc.data());
-         */
-      } else {
-        console.log("No such document!");
-      }
-    }).catch((error) => {
-      console.log("Error getting document:", error);
-    });
-  }
-});
-
-
 // Getting messages from the database
 function addChatOnScreen(chat) {
 
@@ -79,7 +55,8 @@ function addChatOnScreen(chat) {
 }
 
 // Look for added or removed documents in database
-chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
+
+var unsub = chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     const doc = change.doc;
     if (change.type === "added") {
@@ -87,6 +64,30 @@ chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
     }
   });
 });
+
+
+// Select the Channel
+rooms.addEventListener("click", e => {
+  if (e.target.tagName === "BUTTON") {
+    chats = db.collection(e.target.getAttribute("id"));
+    messagesList.innerHTML = "";
+    unsub();
+    console.log(chats);
+    chats.orderBy("created", "asc").limitToLast(50).get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          console.log(doc)
+          addChatOnScreen(doc.data());
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    /*     subThis(chats)
+     */
+  }
+});
+
 
 // Listen to the Senden button
 messageForm.addEventListener('submit', sendMessage);
