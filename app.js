@@ -55,7 +55,6 @@ function addChatOnScreen(chat) {
 }
 
 // Look for added or removed documents in database
-
 var unsub = chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     const doc = change.doc;
@@ -64,7 +63,6 @@ var unsub = chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot 
     }
   });
 });
-
 
 // Select the Channel
 rooms.addEventListener("click", e => {
@@ -93,7 +91,6 @@ rooms.addEventListener("click", e => {
     });
   });
 });
-
 
 // Listen to the Senden button
 messageForm.addEventListener('submit', sendMessage);
