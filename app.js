@@ -83,9 +83,15 @@ rooms.addEventListener("click", e => {
       .catch((error) => {
         console.log("Error getting document:", error);
       });
-    /*     subThis(chats)
-     */
   }
+  unsub = chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+      const doc = change.doc;
+      if (change.type === "added") {
+        addChatOnScreen(doc.data());
+      }
+    });
+  });
 });
 
 
