@@ -3,7 +3,7 @@ const messageForm = document.querySelector("#message-form"); // Input form
 const inputField = document.querySelector("#msg-input");
 const signOutBtn = document.querySelector("#sign-out-btn");
 const settingsBtn = document.querySelector("#settings-btn");
-const rooms = document.querySelector(".chat-rooms");
+const rooms = document.querySelector(".rooms-btn");
 let localUsername;
 const db = firebase.firestore();
 var chats = db.collection("general");
@@ -70,7 +70,6 @@ rooms.addEventListener("click", e => {
     chats = db.collection(e.target.getAttribute("id"));
     messagesList.innerHTML = "";
     unsub();
-    console.log(chats);
     chats.orderBy("created", "asc").limitToLast(50).get()
       .then((snapshot) => {
         snapshot.forEach((doc) => {

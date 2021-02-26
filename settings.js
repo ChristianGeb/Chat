@@ -20,7 +20,7 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
-function changeName(e) {
+/* function changeName(e) {
   e.preventDefault();
 
   const newUsername = inputField.value.trim();
@@ -41,7 +41,7 @@ function changeName(e) {
   }
 }
 
-usernameForm.addEventListener('submit', changeName);
+usernameForm.addEventListener('submit', changeName); */
 
 // Reauthenticate before you can update to a new password
 function reauth(pw) {

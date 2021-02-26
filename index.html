@@ -20,18 +20,22 @@
       <ul id="messages">
       </ul>
     </div>
-
     <form autocomplete="off" id="message-form">
       <input type="text" id="msg-input" pattern="[^/><\][\\\x22;|]+" placeholder="Write a message">
       <button id="msg-btn" type="submit"><i class="fas fa-chevron-circle-right send-icon"></i></button>
     </form>
-    <div class="chat-rooms">
-      <button id="general" class="room-btn active">General</button>
-      <button id="gaming" class="room-btn">Gaming</button>
-      <button id="food" class="room-btn">Food</button>
+    <div class="option-bar">
+      <div class="rooms-btn">
+        <button id="general" class="room-btn active">#Main</button>
+        <button id="gaming" class="room-btn">#Games</button>
+        <button id="food" class="room-btn">#Food</button>
+      </div>
+      <div class="option-btn">
+        <button id="sign-out-btn" class="lwr-btn"><i class="fas fa-door-open"></i></button>
+        <button id="settings-btn" class="lwr-btn"><a href="settings.html"><i class="fas fa-users-cog"></i></a></button>
+      </div>
     </div>
-    <button id="sign-out-btn" class="lwr-btn">Log Out</button>
-    <button id="settings-btn" class="lwr-btn"><a href="settings.html">Settings</a></button>
+
   </div>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
