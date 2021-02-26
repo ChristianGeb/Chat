@@ -92,6 +92,17 @@ rooms.addEventListener("click", e => {
   });
 });
 
+// Color active chat room button
+document.addEventListener('DOMContentLoaded', () => {
+  let buttons = document.querySelectorAll(".room-btn");
+  buttons.forEach(function (button) {
+    button.addEventListener("click", () => {
+      buttons.forEach(button => button.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+});
+
 // Listen to the Senden button
 messageForm.addEventListener('submit', sendMessage);
 // Create object with name and messagetext, before check if text is empty
