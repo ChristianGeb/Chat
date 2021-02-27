@@ -60,8 +60,8 @@ h2 {
   max-width: 85%;
   padding: 8px;
   border-radius: 8px;
-  background-color: #ccf1f1;
-  color: black;
+  background-color: #157992;
+  color: white;
   margin: 0px 30px 15px 30px;
   text-align: left;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -76,7 +76,7 @@ h2 {
 }
 
 .color-right {
-  background-color: #b5e8f8;
+  background-color: #3b5179;
 }
 
 .name {
@@ -123,7 +123,7 @@ h2 {
 
 .send-icon {
   font-size: 32px;
-  color: #b5e8f8;
+  color: #7d92b8;
   padding: 0;
   margin: 0 15px;
 }
@@ -248,7 +248,7 @@ a {
 
 .active {
   color: #fff;
-  background-color: #319db8;
+  background-color: #7d92b8;
 }
 
 .option-bar {
