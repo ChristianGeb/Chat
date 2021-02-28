@@ -64,7 +64,7 @@ h2 {
   padding: 17px;
   border-radius: 12px 12px 12px 1px;
   background-color: #726DFF;
-  color: #f5f5ff;
+  color: #ffffffe8;
   border: 1px solid #2d323f;
   margin: 0px 30px 15px 30px;
   text-align: left;
@@ -77,12 +77,12 @@ h2 {
 
 .color-right {
   background-color: #454D62;
-  color: #ecf2ff;
+  color: #ffffffdc;
   border-radius: 12px 12px 1px 12px;
 }
 
 .name {
-  color: #ffffffb6;
+  color: #ffffffdc;
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 5px;
@@ -262,7 +262,7 @@ a {
   margin-right: 5px;
   border-radius: 8px;
   cursor: pointer;
-  color: white;
+  color: #8e9bc0;
   background-color: #454D62;
   font-size: 1.2rem;
   border: none;
@@ -270,8 +270,8 @@ a {
 }
 
 .active {
-  color: #fff;
-  background-color: #707A97;
+  color: #e4e3ff;
+  background-color: #726DFF;
 }
 
 .option-bar {
