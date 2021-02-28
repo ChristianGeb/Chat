@@ -43,7 +43,7 @@ h2 {
   width: 90vw;
   max-width: 700px;
   margin-top: 20px;
-  background-color: #353B4B;
+  background-color: #303646;
   border-radius: 8px;
   overflow-y: scroll;
   box-shadow:
@@ -65,12 +65,10 @@ h2 {
   border-radius: 12px 12px 12px 1px;
   background-color: #726DFF;
   color: #f5f5ff;
-  border: 1px solid #2b303d;
+  border: 1px solid #2d323f;
   margin: 0px 30px 15px 30px;
   text-align: left;
-  box-shadow:
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072);
+  box-shadow: 0 12.3px 20.9px rgba(0, 0, 0, 0.032);
 }
 
 .to-right {
@@ -167,7 +165,7 @@ input {
   width: 90vw;
   max-width: 700px;
   margin-top: 20px;
-  background-color: rgb(255, 255, 255);
+  background-color: #353B4B;
   border-radius: 8px;
   box-shadow:
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -192,12 +190,12 @@ a {
 
 .back-icon {
   font-size: 32px;
-  color: #ffffff;
+  color: #726DFF;
   margin: 20px auto;
 }
 
 .settings-form {
-  background-color: #4F5D75;
+  background-color: #3A4052;
   padding: 15px;
   margin: 20px;
   width: 80vw;
@@ -205,6 +203,20 @@ a {
   border-radius: 8px;
   display: flex;
   justify-content: space-evenly;
+}
+
+#save-btn {
+  width: 20px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #3A4052;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: none;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #old-pw,
@@ -227,7 +239,7 @@ a {
 }
 
 #delete-form {
-  background-color: #4F5D75;
+  background-color: #3A4052;
   padding: 15px;
   margin: 20px;
   width: 80vw;
