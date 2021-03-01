@@ -24,9 +24,9 @@ function addChatOnScreen(chat) {
   // Time right now and when was the message created
   let now = new Date();
   let createdAt = chat.created.toDate();
-  const oneDay = 60 * 60 * 24 * 1000
+  const oneDay = 60 * 60 * 12 * 1000
 
-  // Is the message older than one 24 hours?
+  // Is the message older than one 12 hours?
   var oldMessage = (now - createdAt) > oneDay;
 
   // If true convert to full date (e.g. 12.2.2021), if false convert to time (e.g. 19:23:15)
@@ -55,7 +55,7 @@ function addChatOnScreen(chat) {
 }
 
 // Look for added or removed documents in database
-var unsub = chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
+var unsub = chats.orderBy("created", "asc").limitToLast(40).onSnapshot(snapshot => {
   snapshot.docChanges().forEach(change => {
     const doc = change.doc;
     if (change.type === "added") {
@@ -70,25 +70,15 @@ rooms.addEventListener("click", e => {
     chats = db.collection(e.target.getAttribute("id"));
     messagesList.innerHTML = "";
     unsub();
-    chats.orderBy("created", "asc").limitToLast(50).get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          console.log(doc)
+    unsub = chats.orderBy("created", "asc").limitToLast(40).onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        const doc = change.doc;
+        if (change.type === "added") {
           addChatOnScreen(doc.data());
-        });
-      })
-      .catch((error) => {
-        console.log("Error getting document:", error);
+        }
       });
-  }
-  unsub = chats.orderBy("created", "asc").limitToLast(50).onSnapshot(snapshot => {
-    snapshot.docChanges().forEach(change => {
-      const doc = change.doc;
-      if (change.type === "added") {
-        addChatOnScreen(doc.data());
-      }
     });
-  });
+  }
 });
 
 // Color active chat room button
