@@ -308,3 +308,19 @@ a {
     padding: 15px 10px;
   }
 }
+
+@media (max-width: 385px) {
+
+  .lwr-btn {
+    width: 45px;
+    font-size: 1rem;
+    padding: 12px 1px;
+    margin-left: 2px;
+  }
+
+  .room-btn {
+    font-size: 0.9rem;
+    margin-right: 1px;
+    padding: 12px 6px;
+  }
+}
